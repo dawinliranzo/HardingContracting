@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harding Contracting Inc | West Harrison, NY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c9302c;
+            --accent-hover: #a82522;
+            --gold: #d4a843;
+            --light: #f5f5f5;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .cta-btn.secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .badge-item {
+            opacity: 0.9;
+        }
+
+        .badge-item h3 {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .badge-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto;
+        }
+
+        /* Services */
+        .services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Before & After Gallery */
+        .before-after {
+            background: var(--light);
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ba-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .ba-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ba-images {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .ba-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 15px;
+            padding: 6px 16px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .ba-label.before {
+            left: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+        }
+
+        .ba-label.after {
+            right: 15px;
+            background: var(--accent);
+            color: white;
+        }
+
+        .ba-info {
+            padding: 1.5rem;
+        }
+
+        .ba-info h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .ba-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .ba-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .ba-tag {
+            background: var(--light);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* About */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--accent);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat h4 {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .stat p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials .section-header h2 {
+            color: white;
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-item div h4 {
+            margin-bottom: 0.2rem;
+            color: var(--primary);
+        }
+
+        .contact-item div p {
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-badge {
+                display: none;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .cta-btn.secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .ba-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ba-images {
+                height: 220px;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Harding<span>Contracting</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#before-after">Before & After</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Building Excellence,<br>One Project at a Time</h1>
+            <p>Licensed & Insured General Contracting in West Harrison, NY</p>
+            <div>
+                <a href="#contact" class="cta-btn">Get a Free Estimate</a>
+                <a href="#before-after" class="cta-btn secondary">See Transformations</a>
+            </div>
+        </div>
+        <div class="hero-badge">
+            <div class="badge-item">
+                <h3>15+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="badge-item">
+                <h3>500+</h3>
+                <p>Projects Completed</p>
+            </div>
+            <div class="badge-item">
+                <h3>100%</h3>
+                <p>Licensed & Insured</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <div class="divider"></div>
+            <p>Comprehensive construction solutions for residential and commercial clients</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">&#127968;</div>
+                <h3>Residential Construction</h3>
+                <p>Custom homes, additions, renovations, and remodeling projects built to your exact specifications and budget.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#127970;</div>
+                <h3>Commercial Build-Outs</h3>
+                <p>Office spaces, retail locations, and commercial renovations delivered on time and within budget.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128296;</div>
+                <h3>Kitchen & Bath Remodeling</h3>
+                <p>Transform your most-used spaces with modern designs, quality materials, and expert craftsmanship.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#129521;</div>
+                <h3>Masonry & Concrete</h3>
+                <p>Foundations, driveways, patios, retaining walls, and brickwork built to last generations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#127912;</div>
+                <h3>Painting & Finishing</h3>
+                <p>Interior and exterior painting, drywall, and finishing touches that bring your vision to life.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128295;</div>
+                <h3>General Repairs</h3>
+                <p>From minor fixes to major structural repairs, we handle it all with professionalism and care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Gallery -->
+    <section class="before-after" id="before-after">
+        <div class="section-header">
+            <h2>Before & After</h2>
+            <div class="divider"></div>
+            <p>Real transformations. Real results. See the difference Harding Contracting makes.</p>
+        </div>
+        <div class="ba-grid">
+            <!-- Bathroom -->
+            <div class="ba-card">
+                <div class="ba-images">
+                    <span class="ba-label before">Before</span>
+                    <span class="ba-label after">After</span>
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.cameronconstruction.com.au/80db785f01e5e98dbd2799d300e60f2488e22088.jpeg" alt="Bathroom renovation before and after">
+                </div>
+                <div class="ba-info">
+                    <h3>West Harrison Bathroom Remodel</h3>
+                    <p>Dated, cramped bathroom transformed into a bright, modern spa-like retreat with walk-in glass shower and new vanity.</p>
+                    <div class="ba-tags">
+                        <span class="ba-tag">Bathroom</span>
+                        <span class="ba-tag">Tile Work</span>
+                        <span class="ba-tag">Fixtures</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kitchen -->
+            <div class="ba-card">
+                <div class="ba-images">
+                    <span class="ba-label before">Before</span>
+                    <span class="ba-label after">After</span>
+                    <img src="https://kimi-web-img.moonshot.cn/img/k-c-a.co.uk/3a639b814df87d8193cf2955aa198ea7f575bc5a.jpg" alt="Kitchen renovation before and after">
+                </div>
+                <div class="ba-info">
+                    <h3>Modern Kitchen Transformation</h3>
+                    <p>Outdated kitchen with worn cabinets converted into an open-concept space with custom cabinetry, quartz countertops, and new appliances.</p>
+                    <div class="ba-tags">
+                        <span class="ba-tag">Kitchen</span>
+                        <span class="ba-tag">Cabinetry</span>
+                        <span class="ba-tag">Countertops</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exterior -->
+            <div class="ba-card">
+                <div class="ba-images">
+                    <span class="ba-label before">Before</span>
+                    <span class="ba-label after">After</span>
+                    <img src="https://kimi-web-img.moonshot.cn/img/res.cloudinary.com/8a202c8b55761b59c1e80110139dbd4dabe6d0d1.jpg" alt="House exterior renovation before and after">
+                </div>
+                <div class="ba-info">
+                    <h3>Complete Exterior Makeover</h3>
+                    <p>Full curb appeal renovation with new siding, roofing, landscaping, and updated color scheme for a stunning first impression.</p>
+                    <div class="ba-tags">
+                        <span class="ba-tag">Exterior</span>
+                        <span class="ba-tag">Siding</span>
+                        <span class="ba-tag">Landscaping</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basement -->
+            <div class="ba-card">
+                <div class="ba-images">
+                    <span class="ba-label before">Before</span>
+                    <span class="ba-label after">After</span>
+                    <img src="https://kimi-web-img.moonshot.cn/img/mplsbasementremodeling.com/976f0735005f47a5ef3138719503112b453fc83a.jpg" alt="Basement renovation before and after">
+                </div>
+                <div class="ba-info">
+                    <h3>Finished Basement Conversion</h3>
+                    <p>Raw, unfinished basement turned into a beautiful entertainment and living space with proper flooring, lighting, and drywall.</p>
+                    <div class="ba-tags">
+                        <span class="ba-tag">Basement</span>
+                        <span class="ba-tag">Drywall</span>
+                        <span class="ba-tag">Flooring</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bathroom 2 -->
+            <div class="ba-card">
+                <div class="ba-images">
+                    <span class="ba-label before">Before</span>
+                    <span class="ba-label after">After</span>
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.memehill.com/69fc34702454322cf6eea62c934aee90d2073065.jpg" alt="Bathroom vanity renovation before and after">
+                </div>
+                <div class="ba-info">
+                    <h3>Vintage Bathroom Update</h3>
+                    <p>Retro green tile bathroom updated with modern navy vanity, marble countertops, brass fixtures, and fresh white tile.</p>
+                    <div class="ba-tags">
+                        <span class="ba-tag">Bathroom</span>
+                        <span class="ba-tag">Vanity</span>
+                        <span class="ba-tag">Marble</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kitchen 2 -->
+            <div class="ba-card">
+                <div class="ba-images">
+                    <span class="ba-label before">Before</span>
+                    <span class="ba-label after">After</span>
+                    <img src="https://kimi-web-img.moonshot.cn/img/hips.hearstapps.com/d7209f05464977c81bfcd56e1fb996818966942d.png" alt="Kitchen makeover before and after">
+                </div>
+                <div class="ba-info">
+                    <h3>Elegant Kitchen Makeover</h3>
+                    <p>Dated oak cabinets and old appliances replaced with sophisticated white cabinetry, marble backsplash, and premium brass lighting.</p>
+                    <div class="ba-tags">
+                        <span class="ba-tag">Kitchen</span>
+                        <span class="ba-tag">Backsplash</span>
+                        <span class="ba-tag">Lighting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about">
+            <div class="about-img">
+                <img src="https://kimi-web-img.moonshot.cn/img/media.gettyimages.com/c095609a7f0808b50c1da9e6924a8791097c7946.jpg" alt="Harding Contracting crew remodeling a house">
+            </div>
+            <div class="about-content">
+                <h2>About Harding Contracting</h2>
+                <p>Founded by Angel Serano, Harding Contracting Inc has been serving West Harrison and the greater New York area with pride and dedication. We believe that quality construction is built on trust, transparency, and craftsmanship.</p>
+                <p>Every project we undertake—whether a small repair or a full-scale build—is approached with the same level of commitment. We use only premium materials, employ skilled tradespeople, and maintain open communication throughout the entire process.</p>
+                <p>Our reputation is built on referrals from satisfied clients who know they can count on us to deliver exceptional results, every time.</p>
+
+                <div class="stats">
+                    <div class="stat">
+                        <h4>15+</h4>
+                        <p>Years Active</p>
+                    </div>
+                    <div class="stat">
+                        <h4>500+</h4>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat">
+                        <h4>0</h4>
+                        <p>Complaints</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2>Recent Projects</h2>
+            <div class="divider"></div>
+            <p>A showcase of our craftsmanship across Westchester County</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Home renovation">
+                <div class="project-overlay">
+                    <h3>West Harrison Home Renovation</h3>
+                    <p>Complete interior remodel & kitchen upgrade</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kitchen remodel">
+                <div class="project-overlay">
+                    <h3>Modern Kitchen Build-Out</h3>
+                    <p>Custom cabinetry, quartz countertops, new flooring</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bathroom renovation">
+                <div class="project-overlay">
+                    <h3>Luxury Bathroom Remodel</h3>
+                    <p>Walk-in shower, heated floors, custom tile work</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Deck construction">
+                <div class="project-overlay">
+                    <h3>Custom Deck & Patio</h3>
+                    <p>Composite decking with integrated lighting</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Commercial space">
+                <div class="project-overlay">
+                    <h3>Retail Space Renovation</h3>
+                    <p>Commercial build-out for local business</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Basement finish">
+                <div class="project-overlay">
+                    <h3>Finished Basement</h3>
+                    <p>Full basement conversion to living space</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <div class="divider" style="background: var(--gold);"></div>
+            <p>Trusted by homeowners and businesses throughout Westchester</p>
+        </div>
+        <div class="testimonial-slider">
+            <p class="testimonial">"Angel and his team transformed our outdated kitchen into a modern masterpiece. The attention to detail was incredible, and they finished ahead of schedule. Highly recommend Harding Contracting!"</p>
+            <p class="testimonial-author">Sarah M.</p>
+            <p class="testimonial-role">West Harrison, NY</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <div class="divider"></div>
+            <p>Ready to start your project? Contact us for a free consultation and estimate.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p style="margin-bottom: 2rem; color: var(--text-light);">We're here to answer your questions and provide expert guidance on your next construction project.</p>
+
+                <div class="contact-item">
+                    <div class="icon">&#128222;</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:3477805865" style="color: var(--text); text-decoration: none;">(347) 780-5865</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">&#9993;</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:Hardingcontracting79@gmail.com" style="color: var(--text); text-decoration: none;">Hardingcontracting79@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">&#128205;</div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>193 Lincoln Ave<br>West Harrison, NY 10604</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">&#128336;</div>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Mon - Fri: 7:00 AM - 6:00 PM<br>Saturday: 8:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">Request a Free Estimate</h3>
+                <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" required>
+                            <option value="">Select a service...</option>
+                            <option value="residential">Residential Construction</option>
+                            <option value="commercial">Commercial Build-Out</option>
+                            <option value="kitchen">Kitchen Remodeling</option>
+                            <option value="bathroom">Bathroom Remodeling</option>
+                            <option value="masonry">Masonry/Concrete</option>
+                            <option value="painting">Painting & Finishing</option>
+                            <option value="repair">General Repairs</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Harding<span>Contracting</span></div>
+            <p style="color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto;">Licensed and insured general contracting serving West Harrison and surrounding Westchester County communities.</p>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#before-after">Before & After</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="footer-bottom">
+                <p>&copy; Harding Contracting Inc. All rights reserved. | Licensed & Insured</p>
+                <p style="margin-top: 0.5rem;">193 Lincoln Ave, West Harrison, NY 10604 | (347) 780-5865</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Nav background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+
+</body>
+</html>
