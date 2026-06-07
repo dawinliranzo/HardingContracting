@@ -1317,21 +1317,23 @@
             <div class="contact-form">
                 <h3 style="margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">Request a Free Estimate</h3>
                 <form action="https://formspree.io/f/mbdegbyw" method="POST">
+                    <input type="hidden" name="_subject" value="New inquiry from Harding Contracting website">
+                    <input type="hidden" name="_replyto" value="">
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Your name" required>
+                        <input type="text" name="name" id="name" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="your@email.com" required>
+                        <input type="email" name="email" id="email" placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                        <input type="tel" name="phone" id="phone" placeholder="(555) 123-4567" required>
                     </div>
                     <div class="form-group">
                         <label for="service">Service Needed</label>
-                        <select id="service" required>
+                        <select name="service" id="service" required>
                             <option value="">Select a service...</option>
                             <option value="residential">Residential Construction</option>
                             <option value="commercial">Commercial Build-Out</option>
@@ -1345,7 +1347,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Project Details</label>
-                        <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+                        <textarea name="message" id="message" placeholder="Tell us about your project..." required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
